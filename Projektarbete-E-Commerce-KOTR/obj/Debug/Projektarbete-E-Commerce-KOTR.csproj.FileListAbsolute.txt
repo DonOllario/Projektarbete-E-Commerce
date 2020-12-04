@@ -1,0 +1,6 @@
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.exe.config
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.exe
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.pdb
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.csprojAssemblyReference.cache
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.exe
+C:\Users\nyhol\OneDrive\Skrivbord\Plugg\Objektorienterad Programmering, grund\Projektarbete\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.pdb
