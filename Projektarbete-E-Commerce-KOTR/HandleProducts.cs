@@ -19,6 +19,7 @@ namespace Projektarbete_E_Commerce_KOTR
             CreateProducts.Add(new Products { id = 3001, name = "Jeans", price = "799:-", description = "Blue ragged jeans made by JC", category = "Pants" });
             CreateProducts.Add(new Products { id = 4001, name = "Cardigan", price = "4999:-", description = "Scarlet cardigan by Lacoste", category = "Sweaters" });
             CreateProducts.Add(new Products { id = 5001, name = "Sunglasses", price = "1999:-", description = "Polarized lenses made by Ray-Ban", category = "Accessories" });
+            CreateProducts.Add(new Products { id = 6001, name = "Chinos", price = "499:-", description = "Purple chinos made by cheap monday", category = "Pants" });
         }
 
         public void GetClothes() // Skriver ut info om alla produkter
@@ -30,16 +31,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 Console.WriteLine();
             }
         }
-        public void GetCategories() // Skriver ut alla kategorier från listan
-        {
-            List<Products> GetCategories = MyClothes.GetList();
-            foreach (Products s in GetCategories)
-            {
-                Console.WriteLine(s.PrintCategory());
-                Console.WriteLine();
-            }
-
-        }
+        
         public void GetNames() // Skriver ut namnet på alla produkter
         {
             List<Products> GetNames = MyClothes.GetList();
@@ -77,6 +69,18 @@ namespace Projektarbete_E_Commerce_KOTR
                     Console.WriteLine(SpecficProduct[i].PrintProducts()); // Skriver ut all info om den produkt man valt
                     Console.WriteLine();
                 }
+            }
+        }
+
+        public void AllCategories() // Skriver ut alla kategorier
+        {
+            Categories.AddRange(difcats);
+            Console.WriteLine("Categories: ");
+            Console.WriteLine();
+            for (int i = 0; i < difcats.Length; i++)
+            {
+                Console.WriteLine(". " + Categories[i]);
+
             }
         }
     }
