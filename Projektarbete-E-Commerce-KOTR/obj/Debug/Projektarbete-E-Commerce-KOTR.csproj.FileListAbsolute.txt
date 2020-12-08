@@ -1,7 +1,0 @@
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.csprojAssemblyReference.cache
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.csproj.CoreCompileInputs.cache
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.exe.config
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.exe
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\bin\Debug\Projektarbete-E-Commerce-KOTR.pdb
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.exe
-C:\Users\Oliver\source\repos\Projektarbete-E-Commerce\Projektarbete-E-Commerce-KOTR\obj\Debug\Projektarbete-E-Commerce-KOTR.pdb
