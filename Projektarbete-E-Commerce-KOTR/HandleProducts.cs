@@ -17,7 +17,7 @@ namespace Projektarbete_E_Commerce_KOTR
             CreateProducts.Add(new Products { id = 1001, name = "Business Shirt", price = "799:-", description = "A white business shirt made from cotton by Ralph Lauren", category = "Shirts" });
             CreateProducts.Add(new Products { id = 2001, name = "Winter hat", price = "549:-", description = "A black winter hat made with yarn", category = "Hats" });
             CreateProducts.Add(new Products { id = 3001, name = "Jeans", price = "799:-", description = "Blue ragged jeans made by JC", category = "Pants" });
-            CreateProducts.Add(new Products { id = 4001, name = "Cardigan", price = "4999:-", description = "Scarlet cardigan by Lacoste", category = "Sweaters" });
+            CreateProducts.Add(new Products { id = 4001, name = "Cardigan", price = "4999:-", description = "Red and blue cardigan by Lacoste", category = "Sweaters" });
             CreateProducts.Add(new Products { id = 5001, name = "Sunglasses", price = "1999:-", description = "Polarized lenses made by Ray-Ban", category = "Accessories" });
             CreateProducts.Add(new Products { id = 6001, name = "Chinos", price = "499:-", description = "Purple chinos made by cheap monday", category = "Pants" });
         }
@@ -37,6 +37,7 @@ namespace Projektarbete_E_Commerce_KOTR
             List<Products> GetNames = MyClothes.GetList();
             foreach (Products name in GetNames)
             {
+                Console.WriteLine();
                 Console.WriteLine(name.PrintName());
                 Console.WriteLine();
             }
@@ -51,6 +52,7 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 if (filtercategory[i].category.Equals(sSearch))
                 {
+                    Console.WriteLine();
                     Console.WriteLine(filtercategory[i].PrintName()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
                     Console.WriteLine();
                 }
@@ -74,14 +76,18 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void AllCategories() // Skriver ut alla kategorier
         {
-            Categories.AddRange(difcats);
+            Categories.AddRange(ProductCategories);
             Console.WriteLine("Categories: ");
             Console.WriteLine();
-            for (int i = 0; i < difcats.Length; i++)
+            for (int i = 0; i < ProductCategories.Length; i++)
             {
-                Console.WriteLine(". " + Categories[i]);
+                Console.WriteLine(Categories[i]);
 
             }
         }
+
+        
+        
+
     }
 }
