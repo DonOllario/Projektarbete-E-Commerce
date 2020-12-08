@@ -8,7 +8,7 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             bool menuWritten = false;
             String userInput;
