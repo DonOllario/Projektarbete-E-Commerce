@@ -10,13 +10,6 @@ namespace Projektarbete_E_Commerce_KOTR
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Kevin, Oliver, Tobias, Rikard. This is the start of our E-Commerce");
-            ShoppingCart MyCart = new ShoppingCart();
-            HandleProducts Clothes1 = new HandleProducts();
-            Clothes1.CreateProducts();
-            Clothes1.GetNames();
-            Clothes1.SpecificProduct();
-            MyCart.AddToCart();
         }
     }
 }
