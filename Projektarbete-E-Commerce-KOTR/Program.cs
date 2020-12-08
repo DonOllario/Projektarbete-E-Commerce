@@ -6,11 +6,27 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Kevin, Oliver, Tobias, Rikard. This is the start of our E-Commerce");
+            bool menuWritten = false;
+            String userInput;
+
+            MenuHandler myMenu = new MenuHandler();
+            InputManager Choice = new InputManager();
+
+            while (true)
+            {
+                if (!menuWritten)
+                {
+                    myMenu.DisplayMenu();
+                    menuWritten = true;
+                }
+
+                userInput = Console.ReadLine();
+                Choice.HandleInput(userInput);
+            }
         }
     }
 }
