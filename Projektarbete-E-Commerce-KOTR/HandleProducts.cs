@@ -14,15 +14,22 @@ namespace Projektarbete_E_Commerce_KOTR
         public void CreateProducts() // Skapar listan med alla produkter
         {
             List<Products> CreateProducts = MyClothes.GetList();
-            Products Shirt1 = new Products { id = 1001, name = "Business Shirt", price = "799:-", description = "A white business shirt made from cotton by Ralph Lauren", category = "Shirts" };
-            CreateProducts.Add(Shirt1);
-            Products Hat1 = new Products { id = 2001, name = "Winter hat", price = "549:-", description = "A black winter hat made with yarn", category = "Hats" };
-            CreateProducts.Add(Hat1);
-            CreateProducts.Add(new Products { id = 3001, name = "Jeans", price = "799:-", description = "Blue ragged jeans made by JC", category = "Pants" });
-            CreateProducts.Add(new Products { id = 4001, name = "Cardigan", price = "4999:-", description = "Scarlet cardigan by Lacoste", category = "Sweaters" });
-            CreateProducts.Add(new Products { id = 5001, name = "Sunglasses", price = "1999:-", description = "Polarized lenses made by Ray-Ban", category = "Accessories" });
-            CreateProducts.Add(new Products { id = 6001, name = "Chinos", price = "499:-", description = "Purple chinos made by cheap monday", category = "Pants" });
+            //Products Shirt1 = new Products { id = 1001, name = "Business Shirt", price = "799:-", description = "A white business shirt made from cotton by Ralph Lauren", category = "Shirts" };
+            //CreateProducts.Add(Shirt1);
+            //Products Hat1 = new Products { id = 2001, name = "Winter hat", price = "549:-", description = "A black winter hat made with yarn", category = "Hats" };
+            //CreateProducts.Add(Hat1);
+            CreateProducts.Add(new Products { id = "3001", name = "Jeans", price = "799:-", description = "Blue ragged jeans made by JC", category = "2" });
+            CreateProducts.Add(new Products { id = "4001", name = "Cardigan", price = "4999:-", description = "Scarlet cardigan by Lacoste", category = "3" });
+            CreateProducts.Add(new Products { id = "5001", name = "Sunglasses", price = "1999:-", description = "Polarized lenses made by Ray-Ban", category = "4" });
+            CreateProducts.Add(new Products { id = "6001", name = "Chinos", price = "499:-", description = "Purple chinos made by cheap monday", category = "2" });
         }
+
+        // Category:
+        //Shirts = 1
+        //Pants = 2
+        //Sweaters = 3
+        //Accessories = 4
+
 
         public void GetClothes() // Skriver ut info om alla produkter
         {
@@ -54,7 +61,6 @@ namespace Projektarbete_E_Commerce_KOTR
                 if (filtercategory[i].category.Equals(sSearch))
                 {
                     Console.WriteLine(filtercategory[i].PrintName()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                    Console.WriteLine();
                 }
             }
         }
@@ -62,7 +68,7 @@ namespace Projektarbete_E_Commerce_KOTR
         public void SpecificProduct()
         {
             List<Products> SpecficProduct = MyClothes.GetList();
-            Console.WriteLine("Choose product");
+            Console.WriteLine("Choose product:");
             idSearch = Console.ReadLine();
             for (int i = 0; i < SpecficProduct.Count; i++)
             {
@@ -70,9 +76,11 @@ namespace Projektarbete_E_Commerce_KOTR
                 {
 
                     Console.WriteLine(SpecficProduct[i].PrintProducts()); // Skriver ut all info om den produkt man valt
-                    Console.WriteLine();
                 }
             }
+
+            Console.WriteLine("1. Add to Cart");
+            Console.WriteLine("2. Go Back");
         }
 
         public string GetidSearch()
@@ -93,7 +101,7 @@ namespace Projektarbete_E_Commerce_KOTR
             Console.WriteLine();
             for (int i = 0; i < difcats.Length; i++)
             {
-                Console.WriteLine(". " + Categories[i]);
+                Console.WriteLine(i + 1 + ". " + Categories[i]);
 
             }
         }

@@ -12,11 +12,16 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             MenuHandler myMenu = new MenuHandler();
             SignUpSystem signIn = new SignUpSystem();
+            HandleProducts Clothes = new HandleProducts();
+            Clothes.CreateProducts();
 
             if (userInput == "1")
             {
                 // Show Catalogue
                 Console.WriteLine("Clothes");
+                Clothes.AllCategories();
+                Clothes.FilterCategory();
+                Clothes.SpecificProduct();
             }
             else if (userInput == "2")
             {

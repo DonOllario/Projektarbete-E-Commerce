@@ -8,12 +8,12 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     class Products
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
         public string price { get; set; }
         public string description { get; set; }
         public string category { get; set; }
-        public string[] difcats = { "Shirts", "Pants", "Glasses", "Sweaters", "Hats" };
+        public string[] difcats = { "Shirts", "Pants", "Sweaters", "Accessories", "Hats" };
         public List<string> Categories = new List<string>();
 
         private List<Products> Clothes = new List<Products>();
@@ -24,7 +24,7 @@ namespace Projektarbete_E_Commerce_KOTR
         }
         public string PrintProducts() // All info om produkt
         {
-            return "\nID: " + this.id + "\nName: " + this.name + "\nPrice: " + this.price + "\nDescription: " + this.description + "\nCategory: " + this.category;
+            return"\nName: " + this.name +"\nPrice: " + this.price + "\nDescription: " + this.description;
         }
         public string PrintCategory() // Kategorier
         {
