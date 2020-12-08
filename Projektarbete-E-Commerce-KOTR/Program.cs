@@ -10,12 +10,11 @@ namespace Projektarbete_E_Commerce_KOTR
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Kevin, Oliver, Tobias, Rikard. This is the start of our E-Commerce");
-
             bool menuWritten = false;
-            MenuHandler myMenu = new MenuHandler();
+            String userInput;
 
-            Console.WriteLine("----- KOTR Online Shop -----");
+            MenuHandler myMenu = new MenuHandler();
+            InputManager Choice = new InputManager();
 
             while (true)
             {
@@ -23,8 +22,10 @@ namespace Projektarbete_E_Commerce_KOTR
                 {
                     myMenu.DisplayMenu();
                     menuWritten = true;
-                    Console.WriteLine("Hej");
                 }
+
+                userInput = Console.ReadLine();
+                Choice.HandleInput(userInput);
             }
         }
     }
