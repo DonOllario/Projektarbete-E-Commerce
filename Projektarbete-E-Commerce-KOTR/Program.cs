@@ -6,15 +6,27 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            HandleProducts Clothes1 = new HandleProducts();
-            Clothes1.CreateProducts(); // Skickar över listan från HandleProducts till main
-            Clothes1.AllCategories();
-            Clothes1.FilterCategory();
-            Clothes1.SpecificProduct();
+            bool menuWritten = false;
+            String userInput;
+
+            MenuHandler myMenu = new MenuHandler();
+            InputManager Choice = new InputManager();
+
+            while (true)
+            {
+                if (!menuWritten)
+                {
+                    myMenu.DisplayMenu();
+                    menuWritten = true;
+                }
+
+                userInput = Console.ReadLine();
+                Choice.HandleInput(userInput);
+            }
         }
     }
 }
