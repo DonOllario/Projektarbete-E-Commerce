@@ -12,7 +12,7 @@ namespace Projektarbete_E_Commerce_KOTR
         List<string> signInOptions = new List<string>();
         public void DisplayMenu()
         {
-            menuOptions.Add("----- KOTR Online Shop -----");
+            menuOptions.Add("----- KOTRM Online Shop -----");
             menuOptions.Add("1. Browse our Catalogue.");
             menuOptions.Add("2. Show Shopping Cart.");
             menuOptions.Add("3. Sign up / Log in.");
@@ -22,13 +22,18 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void DisplaySignInMenu()
         {
-            signInOptions.Add("----- KOTR Online Shop -----");
+            signInOptions.Add("----- KOTRM Online Shop -----");
             signInOptions.Add("1. Sign In");
             signInOptions.Add("2. Log In");
             signInOptions.Add("3. Go Back");
             signInOptions.ForEach(Console.WriteLine);
         }
 
+        public void ClearConsoleKOTRM()
+        {
+            Console.Clear();
+            Console.WriteLine("----- KOTRM Online Shop -----");
+        }
     }
 }
 

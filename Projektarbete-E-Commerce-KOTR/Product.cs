@@ -6,25 +6,19 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class Products
+    class Product
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
-        public string price { get; set; }
+        public double price { get; set; }
         public string description { get; set; }
         public string category { get; set; }
-        public string[] difcats = { "Shirts", "Pants", "Sweaters", "Accessories", "Hats" };
+        public string[] difcats = { "Shirts", "Pants", "Glasses", "Sweaters", "Hats" };
         public List<string> Categories = new List<string>();
 
-        private List<Products> Clothes = new List<Products>();
-
-        public List<Products> GetList()
-        {
-            return Clothes;
-        }
         public string PrintProducts() // All info om produkt
         {
-            return"\nName: " + this.name +"\nPrice: " + this.price + "\nDescription: " + this.description;
+            return "\nID: " + this.id + "\nName: " + this.name + "\nPrice: " + this.price + ":-" + "\nDescription: " + this.description + "\nCategory: " + this.category;
         }
         public string PrintCategory() // Kategorier
         {

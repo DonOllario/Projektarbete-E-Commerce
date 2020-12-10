@@ -11,21 +11,29 @@ namespace Projektarbete_E_Commerce_KOTR
         public void HandleInput(String userInput)
         {
             MenuHandler myMenu = new MenuHandler();
-            SignUpSystem signIn = new SignUpSystem();
+            SignUpSystem signUp = new SignUpSystem();
             HandleProducts Clothes = new HandleProducts();
-            Clothes.CreateProducts();
+            ProductLine item = new ProductLine();
 
             if (userInput == "1")
             {
                 // Show Catalogue
-                Console.WriteLine("Clothes");
+                myMenu.ClearConsoleKOTRM();
                 Clothes.AllCategories();
-                Clothes.FilterCategory();
-                Clothes.SpecificProduct();
+                Clothes.FilterCategory2(Clothes.Products());
+                Console.WriteLine("-Add product to cart-");
+                Console.WriteLine("Type >Add< to add product to cart");
+                userInput = Console.ReadLine();
+                userInput.ToLower();
+                if (userInput == "add")
+                {
+                    item.AddProductLine(Clothes.Products());
+                }
             }
             else if (userInput == "2")
             {
                 // Show Shopping Cart
+                // myCart.GetCart();
                 Console.WriteLine("Cart");
             }
             else if (userInput == "3")
@@ -40,7 +48,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
                     if (signInInput == "1" || signInInput == "2" || signInInput == "3")
                     {
-                        signIn.HandleSignIn(signInInput);
+                        signUp.HandleSignIn(signInInput);
                         break;
                     }
                     else

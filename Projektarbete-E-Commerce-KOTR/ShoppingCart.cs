@@ -12,9 +12,9 @@ namespace Projektarbete_E_Commerce_KOTR
         int quantity { get; set; }
         int dateAdded { get; set; }
 
-        public Products OurProducts;
-        public HandleProducts HandleCartProducts;
-        List<Products> CartList = new List<Products>();
+        public Product OurProducts = new Product();
+        public HandleProducts HandleCartProducts = new HandleProducts();
+        List<Product> CartList = new List<Product>();
 
         private static int CartIDSeed = 1234567890;
 
@@ -24,9 +24,9 @@ namespace Projektarbete_E_Commerce_KOTR
             CartIDSeed++;
         }
 
-        public void AddToCart()//Addera den produkt användaren har valt till CartList.
+        /*public void AddToCart()//Addera den produkt användaren har valt till CartList.
         {
-            List<Products> ProductsForCart = OurProducts.GetList(); // Skapar hela listan av produkter till denna metoden/klassen. Så att den vet vilka produkter det handlar om.
+            // Hämtar hela listan av produkter till denna metoden/klassen. Så att den vet vilka produkter det handlar om.
             string idSearch = HandleCartProducts.GetidSearch(); // Hämtar den senaste specifikt valda produkten.
             //Console.WriteLine("Quantity");
             //int input = Convert.ToInt32(Console.ReadLine());
@@ -38,20 +38,17 @@ namespace Projektarbete_E_Commerce_KOTR
                 }
             }
             CartList.ForEach(Console.WriteLine);
-        }
-
-        public void RemoveFromCart(Products RemoveThisProduct)
-        {
-            CartList.Remove(RemoveThisProduct);
-        }
-
-        /*public List<Products> GetCart()
-        {
-            for (int i = 0; i < CartList.Length; i++)
-            {
-                return Console.WriteLine(CartList[i]);
-            };
         }*/
+
+        public void RemoveFromCart()
+        {
+            //CartList.Remove();
+        }
+
+        public void GetCart(/*CartList*/)
+        {
+            CartList.ForEach(Console.WriteLine);
+        }
 
         public void Checkout()
         {
