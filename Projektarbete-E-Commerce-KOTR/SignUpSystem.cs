@@ -8,6 +8,7 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class SignUpSystem
     {
+        MenuHandler myMenu = new MenuHandler();
         public void HandleSignIn(String SignInInput)
         {
             MenuHandler myMenu = new MenuHandler();  
@@ -25,8 +26,8 @@ namespace Projektarbete_E_Commerce_KOTR
             else if (SignInInput == "3")
             {
                 //Go back
-                Console.Clear();
-                myMenu.DisplayMenu();
+                myMenu.GoBack();
+                
             }
             else
             {
