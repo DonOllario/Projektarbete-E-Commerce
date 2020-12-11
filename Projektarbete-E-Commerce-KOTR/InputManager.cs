@@ -8,33 +8,49 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class InputManager
     {
+        MenuHandler myMenu = new MenuHandler();
+        SignUpSystem signUp = new SignUpSystem();
+        Product Clothes = new Product();
+        HandleProducts HandleClothes = new HandleProducts();
+        ShoppingCart myCart = new ShoppingCart();
+
         public void HandleInput(String userInput)
         {
-            MenuHandler myMenu = new MenuHandler();
-            SignUpSystem signUp = new SignUpSystem();
-            HandleProducts Clothes = new HandleProducts();
-            ProductLine item = new ProductLine();
 
             if (userInput == "1")
             {
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM();
-                Clothes.AllCategories();
-                Clothes.FilterCategory2(Clothes.Products());
+                HandleClothes.AllCategories();
+                HandleClothes.FilterCategory2(Clothes.Products());
                 Console.WriteLine("-Add product to cart-");
                 Console.WriteLine("Type >Add< to add product to cart");
-                userInput = Console.ReadLine();
-                userInput.ToLower();
-                if (userInput == "add")
+                while (true)
                 {
-                    item.AddProductLine(Clothes.Products());
+                    userInput = Console.ReadLine();
+                    userInput = userInput.ToLower();
+                    if (userInput == "add")
+                    {
+                        myCart.AddProductLine();
+                        break;
+                    }
+                    else
+                        Console.WriteLine("Incorrect Input, Please type 'Add' to continue");
+
                 }
             }
             else if (userInput == "2")
             {
                 // Show Shopping Cart
-                // myCart.GetCart();
-                Console.WriteLine("Cart");
+                //myMenu.ClearConsoleKOTRM();
+                if ((myCart.CartList != null) && (!myCart.CartList.Any()))
+                {
+                    Console.WriteLine("the cart is currently empty.");
+                }
+                else
+                {
+                    myCart.PrintCart(myCart.CartList);
+                }
             }
             else if (userInput == "3")
             {
@@ -67,9 +83,6 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.WriteLine("Incorrect Input, Please try again");
             }
-
-
-
         }
     }
 }

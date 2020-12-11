@@ -6,25 +6,12 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class HandleProducts : Product
+    class HandleProducts
     {
-        public string sSearch { get; set; }
-        public string idSearch { get; set; }
+        public string sSearch;
+        public string idSearch;
         MenuHandler MyMenu = new MenuHandler();
-        public List<Product> Products() // Skapar listan med alla produkter
-        {
-            List<Product> Products = new List<Product>();
-            Products.Add(new Product { id = 1, name = "Business Shirt", price = 799, description = "A white business shirt made from cotton by Ralph Lauren", category = "Shirts" });
-            Products.Add(new Product { id = 2, name = "Winter hat", price = 549, description = "A black winter hat made with yarn", category = "Hats" });
-            Products.Add(new Product { id = 3, name = "Jeans", price = 799, description = "Blue ragged jeans made by JC", category = "Pants" });
-            Products.Add(new Product { id = 4, name = "Cardigan", price = 4999, description = "Scarlet cardigan by Lacoste", category = "Sweaters" });
-            Products.Add(new Product { id = 5, name = "Sunglasses", price = 1999, description = "Polarized lenses made by Ray-Ban", category = "Accessories" });
-            Products.Add(new Product { id = 6, name = "Chinos", price = 499, description = "Purple chinos made by cheap monday", category = "Pants" });
-
-            return Products;
-        }
-
-        
+        Product Products = new Product();
 
         public void GetClothes(List<Product> Products) // Skriver ut info om alla produkter
         {
@@ -147,27 +134,13 @@ namespace Projektarbete_E_Commerce_KOTR
                 }
             }
         }
-
-        
-
-        public string GetidSearch()
-        {
-            return idSearch;
-        }
-
-        public string GetsSearch()
-        {
-            return sSearch;
-        }
-        
-
         public void AllCategories() // Skriver ut alla kategorier
         {
-            Categories.AddRange(difcats);
+            Products.Categories.AddRange(Products.diffCats);
             Console.WriteLine("Choose a category:");
-            for (int i = 0; i < difcats.Length; i++)
+            for (int i = 0; i < Products.diffCats.Length; i++)
             {
-                Console.WriteLine(i + 1 + ". " + Categories[i]);
+                Console.WriteLine(i + 1 + ". " + Products.Categories[i]);
 
             }
         }
