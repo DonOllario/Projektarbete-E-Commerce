@@ -25,7 +25,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 Console.WriteLine("-Add product to cart-");
                 Console.WriteLine("Type >Add< to add product to cart");
                 userInput = Console.ReadLine();
-                userInput.ToLower();
+                userInput = userInput.ToLower();
                 if (userInput == "add")
                 {
                     myCart.AddProductLine();
@@ -34,9 +34,14 @@ namespace Projektarbete_E_Commerce_KOTR
             else if (userInput == "2")
             {
                 // Show Shopping Cart
-
-                myCart.PrintCart(myCart.CartList);
-                Console.WriteLine("Cart");
+                if ((myCart.CartList != null) && (!myCart.CartList.Any()) )
+                {
+                    Console.WriteLine("The cart is currently empty.");
+                }
+                else 
+                {
+                    myCart.PrintCart(myCart.CartList);
+                }
             }
             else if (userInput == "3")
             {
@@ -69,9 +74,6 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.WriteLine("Incorrect Input, Please try again");
             }
-
-
-
         }
     }
 }
