@@ -12,28 +12,30 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             MenuHandler myMenu = new MenuHandler();
             SignUpSystem signUp = new SignUpSystem();
-            HandleProducts Clothes = new HandleProducts();
-            ProductLine item = new ProductLine();
+            Product Clothes = new Product();
+            HandleProducts HandleClothes = new HandleProducts();
+            ShoppingCart myCart = new ShoppingCart();
 
             if (userInput == "1")
             {
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM();
-                Clothes.AllCategories();
-                Clothes.FilterCategory2(Clothes.Products());
+                HandleClothes.AllCategories();
+                HandleClothes.FilterCategory2(Clothes.Products());
                 Console.WriteLine("-Add product to cart-");
                 Console.WriteLine("Type >Add< to add product to cart");
                 userInput = Console.ReadLine();
                 userInput.ToLower();
                 if (userInput == "add")
                 {
-                    item.AddProductLine(Clothes.Products());
+                    myCart.AddProductLine();
                 }
             }
             else if (userInput == "2")
             {
                 // Show Shopping Cart
-                // myCart.GetCart();
+
+                myCart.PrintCart(myCart.CartList);
                 Console.WriteLine("Cart");
             }
             else if (userInput == "3")
