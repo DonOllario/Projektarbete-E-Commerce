@@ -41,6 +41,21 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.WriteLine(cartList[i].PrintProductLine());
             }
+            Console.WriteLine("\n 1. Checkout");
+            Console.WriteLine("\n 2. Go Back");
+            int input = Convert.ToInt32(Console.ReadLine());
+            if (input == 1)
+            {
+                Checkout();
+            }
+            else if (input == 2)
+            {
+                //Go back
+            }
+            else
+            {
+                Console.WriteLine("Incorrect Input, Please try again");
+            }
         }
 
         public void Checkout()
