@@ -49,14 +49,24 @@ namespace Projektarbete_E_Commerce_KOTR
                 Total = Total + cartList[i].PricePerLine;
 
             }
-            Console.WriteLine("\n*************************");
-            Console.WriteLine($"\nTotal: {Total}:-");
+            Console.WriteLine("\n*****************************");
+            Console.WriteLine($"\nShopping cart total: {Total}:-");
+            Console.WriteLine("\n*****************************");
 
             Console.WriteLine("\n1. Checkout");
             Console.WriteLine("2. Go Back");
-            int input = Convert.ToInt32(Console.ReadLine());
             while (true)
             {
+                int input = 0;
+                try
+                {
+                    input = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+
+                    input = 0;
+                }
                 if (input == 1)
                 {
                     Checkout();
