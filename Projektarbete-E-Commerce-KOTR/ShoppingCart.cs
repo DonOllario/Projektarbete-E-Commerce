@@ -43,6 +43,15 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.WriteLine(cartList[i].PrintProductLine());
             }
+            double Total = 0;
+            for (int i = 0; i < cartList.Count; i++)
+            {
+                Total = Total + cartList[i].PricePerLine;
+
+            }
+            Console.WriteLine("\n*************************");
+            Console.WriteLine($"\nTotal: {Total}:-");
+
             Console.WriteLine("\n1. Checkout");
             Console.WriteLine("2. Go Back");
             int input = Convert.ToInt32(Console.ReadLine());
@@ -70,6 +79,10 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Order MyOrder = new Order(CartList, null, null);
             MyOrder.PrintReciept();
+            Console.WriteLine("\n--Press any key to continue shopping.--");
+            Console.ReadKey();
+            myMenu.GoBack();
+            CartList.Clear();
         }
     }
 }

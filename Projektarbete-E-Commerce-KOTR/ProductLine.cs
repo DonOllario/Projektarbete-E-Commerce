@@ -36,28 +36,69 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Product ProductForCart = new Product();
             Console.WriteLine("Type in the wanted product ID.");
-            int prodID = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < Products.Count; i++)
+            while (true)
             {
-                if (Products[i].id.Equals(prodID))
+                int prodID;
+                try
                 {
-                    ProductForCart = Products[i];
+                    prodID = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+
+                    prodID = 0;
+                }
+                
+                int[] CategoryChoices = { 1, 2, 3, 4, 5, 6 };
+                if (CategoryChoices.Contains(prodID))
+                {
+                    
+                    for (int i = 0; i < Products.Count; i++)
+                    {
+                        if (Products[i].id.Equals(prodID))
+                        {
+                            ProductForCart = Products[i];
+                        }
+                    }
+                    return ProductForCart;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect ID, please try again");
                 }
             }
-            return ProductForCart;
+         
         }
 
         public int GetProductLineQuantity() 
         {
             Console.WriteLine("How many would you like to buy?");
-            int quantity = int.Parse(Console.ReadLine());
-            return quantity;
-             
+            while (true)
+            {
+                int quantity;
+                try
+                {
+                    quantity = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+
+                    quantity = 0;
+                }
+                if (quantity != 0)
+                {
+                    return quantity;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect quantity, please try again");
+                }
+            }
         }
 
         public string PrintProductLine()
         {
-            return "\nID: " + ID + "\nName: " + ProductName + "\nPrice: " + Price + ":-" + "\nDescription: " + Description + "\nCategory: " + Category + "\n\nQuantity: " + Quantity + "\nProduct Total: " + PricePerLine;
+            return "\nID: " + ID + "\nName: " + ProductName + "\nPrice: " + Price + ":-" + "\nDescription: " + Description + "\nCategory: " + Category + "\n\nQuantity: " + Quantity + "\nProduct Total: " + PricePerLine + ":-";
         }
 
         public void RemoveProduct(List<Product> ProductLines)
