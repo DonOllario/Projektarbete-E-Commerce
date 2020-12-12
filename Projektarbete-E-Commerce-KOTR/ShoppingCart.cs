@@ -70,6 +70,7 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Order MyOrder = new Order(CartList, null, null);
             MyOrder.PrintReciept();
+
         }
     }
 }

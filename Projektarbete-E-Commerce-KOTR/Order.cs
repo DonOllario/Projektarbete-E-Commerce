@@ -19,7 +19,7 @@ namespace Projektarbete_E_Commerce_KOTR
         private string CVCcode; //Är också satt som string för att felhanteringen i metoden är samma som för CreditCardNumber. Se SetCVCcode
         private string NameOnInvoice;
         private string InvoiceAdress;
-        private bool PaymentCheck = false;
+        private bool PaymentCheck;
 
         MenuHandler MyHandler = new MenuHandler();
 
@@ -38,18 +38,27 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 SetDeliveryAdress();
             }
-            while (PaymentCheck == false)
+            while (PaymentCheck == false) // loopar sålänge betalningen inte gått igenom.
             {
-                int payment = SetPaymentChoise(); //Ber användaren välja betalningsmetod
-                if (payment == 1)
+                string payment = SetPaymentChoise(); //Ber användaren välja betalningsmetod
+                if (payment == "1")
                 {
                     NameOnCard = SetNameOnCard(); //Ber om kortnamn
                     CreditCardNumber = SetCreditCardNumber(); //Ber om kortnummer
                     CVCcode = SetCVCcode(); //Ber om cvc-koden
-                    PaymentCheck = CheckAccountBalance(TotalPrice); //Kollar med banken om det finns pengar på kortet eller inte
-                    CreditCard = true; //Sätter betalningsmetoden för ordern till kreditkort
+                    if (CheckAccountBalance(TotalPrice) == false)//Kollar med banken om det finns pengar på kortet eller inte
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("You dont have enough money on your card. Please try another payment method.");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        CreditCard = true; //Sätter betalningsmetoden för ordern till kreditkort
+                        PaymentCheck = true;
+                    }
                 }
-                else if (payment == 2)
+                else if (payment == "2")
                 {
                     NameOnInvoice = SetNameOnInvoice(accountName); //Ber fakturanamn om kunden inte är inloggad
                     InvoiceAdress = SetInvoiceAdress(accountAdress);//Ber om faktura adress, dubbelkollar om det är samma om man är inloggad
@@ -78,24 +87,17 @@ namespace Projektarbete_E_Commerce_KOTR
             DeliveryAdress = adress;
         }
 
-        private int SetPaymentChoise()// Sätter betalningsmetoden
+        private string SetPaymentChoise()// Sätter betalningsmetoden
         {
             MyHandler.ClearConsoleKOTRM();
             Console.WriteLine("Choose your payment method.{0}1. Credit card.{0}2. Invoice.", Environment.NewLine);
-            int paymentChoise = 0;
-            while (paymentChoise != 1 && paymentChoise != 2)
+            string paymentChoise = "0";
+            while (paymentChoise != "1" && paymentChoise != "2")
             {
-                paymentChoise = int.Parse(Console.ReadLine());
-                switch (paymentChoise)
+                paymentChoise = Console.ReadLine();
+                if(paymentChoise != "1" && paymentChoise != "2")
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("You need to enter 1 or 2.");
-                        break;
+                    Console.WriteLine("You need to enter 1 or 2.");
                 }
             }
             return paymentChoise;
@@ -195,20 +197,17 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Bank TheBank = new Bank();
             bool balance = TheBank.CheckPayment(totalPrice);
-            if (balance == false)
-            {
-                Console.WriteLine("You dont have enough money on your bank account. Please try another payment method.");
-            }
             return balance;
         }
         public void PrintReciept()
         {
             MyHandler.ClearConsoleKOTRM();
             Console.WriteLine($"Thank you for your order! The order number is: {OrderID}");
+            Console.WriteLine("This is your reciept.");
             Console.WriteLine(" ");
             for(int p = 0; p < OrderLines.Count; p++)
             {
-                Console.WriteLine($"{OrderLines[p].ProductName} - {OrderLines[p].PricePerLine}:-");
+                Console.WriteLine($"ID: {OrderLines[p].ID} - {OrderLines[p].ProductName} - {OrderLines[p].Description} - Quantity: {OrderLines[p].Quantity} Price: {OrderLines[p].PricePerLine}:-");
             }
             Console.WriteLine(" ");
             Console.WriteLine($"Delivery adress: {DeliveryAdress}");
