@@ -25,6 +25,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 HandleClothes.FilterCategory2(Clothes.Products());
                 Console.WriteLine("-Add product to cart-");
                 Console.WriteLine("Type >Add< to add product to cart");
+                Console.WriteLine("Type >Back< to return to menu");
                 while (true)
                 {
                     userInput = Console.ReadLine();
@@ -32,6 +33,11 @@ namespace Projektarbete_E_Commerce_KOTR
                     if (userInput == "add")
                     {
                         myCart.AddProductLine();
+                        break;
+                    }
+                    else if (userInput == "back")
+                    {
+                        myMenu.GoBack();
                         break;
                     }
                     else
