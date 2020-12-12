@@ -16,6 +16,7 @@ namespace Projektarbete_E_Commerce_KOTR
             MenuHandler myMenu = new MenuHandler();
             InputManager Choice = new InputManager();
 
+
             while (true)
             {
                 if (!menuWritten)

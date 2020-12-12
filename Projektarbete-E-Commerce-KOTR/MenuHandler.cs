@@ -8,24 +8,37 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class MenuHandler
     {
-        List<string> menuOptions = new List<string>(); // En lista för alla mina alternativ.
+        List<string> menuOptions = new List<string>();
         List<string> signInOptions = new List<string>();
+        bool displayMenuSaved = false;
+        bool signInMenuSaved = false;
+
         public void DisplayMenu()
         {
-            menuOptions.Add("----- KOTRM Online Shop -----");
-            menuOptions.Add("1. Browse our Catalogue.");
-            menuOptions.Add("2. Show Shopping Cart.");
-            menuOptions.Add("3. Sign up / Log in.");
-            menuOptions.Add(" - Type Close to Exit.");
+            if (!displayMenuSaved)
+            {
+                menuOptions.Add("----- KOTRM Online Shop -----");
+                menuOptions.Add("1. Browse our Catalogue.");
+                menuOptions.Add("2. Show Shopping Cart.");
+                menuOptions.Add("3. Sign up / Log in.");
+                menuOptions.Add(" - Type Close to Exit.");
+                displayMenuSaved = true;
+            }
+
             menuOptions.ForEach(Console.WriteLine);
         }
 
         public void DisplaySignInMenu()
         {
-            signInOptions.Add("----- KOTRM Online Shop -----");
-            signInOptions.Add("1. Sign In");
-            signInOptions.Add("2. Log In");
-            signInOptions.Add("3. Go Back");
+            if (!signInMenuSaved)
+            {
+                signInOptions.Add("----- KOTRM Online Shop -----");
+                signInOptions.Add("1. Sign In");
+                signInOptions.Add("2. Log In");
+                signInOptions.Add("3. Go Back");
+                signInMenuSaved = true;
+            }
+
             signInOptions.ForEach(Console.WriteLine);
         }
 
@@ -33,6 +46,12 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Console.Clear();
             Console.WriteLine("----- KOTRM Online Shop -----");
+        }
+
+        public void GoBack()
+        {
+            Console.Clear();
+            DisplayMenu();
         }
     }
 }

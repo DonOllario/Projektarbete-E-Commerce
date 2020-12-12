@@ -8,7 +8,7 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     class HandleProducts
     {
-        public string sSearch;
+        
         public string idSearch;
         MenuHandler MyMenu = new MenuHandler();
         Product Products = new Product();
@@ -31,32 +31,27 @@ namespace Projektarbete_E_Commerce_KOTR
             }
         }
 
-        /*public void FilterCategory(List<Product> Products)
+        public void FilterCategory(List<Product> Products) 
         {
             
-            Console.WriteLine("Choose category:");
-            sSearch = Console.ReadLine();
-            for (int i = 0; i < Products.Count; i++)
-            {
-                if (Products[i].category.Equals(sSearch))
-                {
-                    Console.WriteLine(Products[i].PrintName()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                    Console.WriteLine();
-                }
-            }
-        }*/
-        public void FilterCategory2(List<Product> Products) 
-        {
-            
-            int input = Convert.ToInt32(Console.ReadLine());
-            MyMenu.ClearConsoleKOTRM();
+            int input = 0;
             int[] CategoryChoices = { 1, 2, 3, 4, 5 };
-            while(CategoryChoices.Contains(input)) 
+            while(!CategoryChoices.Contains(input)) 
             {
+                try
+                {
+                    input = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+
+                    input = 6;
+                }
                 
                 switch (input)
                 {
                     case 1:
+                        MyMenu.ClearConsoleKOTRM();
                         Console.WriteLine("Shirts: ");
                         string CatVar1 = "Shirts";
                         for (int i = 0; i < Products.Count; i++)
@@ -69,7 +64,7 @@ namespace Projektarbete_E_Commerce_KOTR
                         }
                         break;
                     case 2:
-                        Console.WriteLine();
+                        MyMenu.ClearConsoleKOTRM();
                         Console.WriteLine("Pants: ");
                         string CatVar2 = "Pants";
                         for (int i = 0; i < Products.Count; i++)
@@ -82,6 +77,7 @@ namespace Projektarbete_E_Commerce_KOTR
                         }
                         break;
                     case 3:
+                        MyMenu.ClearConsoleKOTRM();
                         Console.WriteLine("Glasses: ");
                         string CatVar3 = "Glasses";
                         for (int i = 0; i < Products.Count; i++)
@@ -94,6 +90,7 @@ namespace Projektarbete_E_Commerce_KOTR
                         }
                         break;
                     case 4:
+                        MyMenu.ClearConsoleKOTRM();
                         Console.WriteLine("Sweaters: ");
                         string CatVar4 = "Sweaters";
                         for (int i = 0; i < Products.Count; i++)
@@ -106,6 +103,7 @@ namespace Projektarbete_E_Commerce_KOTR
                         }
                         break;
                     case 5:
+                        MyMenu.ClearConsoleKOTRM();
                         Console.WriteLine("Hats: ");
                         string CatVar5 = "Hats";
                         for (int i = 0; i < Products.Count; i++)

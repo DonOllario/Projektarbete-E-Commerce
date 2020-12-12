@@ -8,37 +8,46 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class InputManager
     {
+        MenuHandler myMenu = new MenuHandler();
+        SignUpSystem signUp = new SignUpSystem();
+        Product Clothes = new Product();
+        HandleProducts HandleClothes = new HandleProducts();
+        ShoppingCart myCart = new ShoppingCart();
+
         public void HandleInput(String userInput)
         {
-            MenuHandler myMenu = new MenuHandler();
-            SignUpSystem signUp = new SignUpSystem();
-            Product Clothes = new Product();
-            HandleProducts HandleClothes = new HandleProducts();
-            ShoppingCart myCart = new ShoppingCart();
 
             if (userInput == "1")
             {
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM();
                 HandleClothes.AllCategories();
-                HandleClothes.FilterCategory2(Clothes.Products());
+                HandleClothes.FilterCategory(Clothes.Products());
                 Console.WriteLine("-Add product to cart-");
                 Console.WriteLine("Type >Add< to add product to cart");
-                userInput = Console.ReadLine();
-                userInput = userInput.ToLower();
-                if (userInput == "add")
+                while (true)
                 {
-                    myCart.AddProductLine();
+                    userInput = Console.ReadLine();
+                    userInput = userInput.ToLower();
+                    if (userInput == "add")
+                    {
+                        myCart.AddProductLine();
+                        break;
+                    }
+                    else
+                        Console.WriteLine("Incorrect Input, Please type 'Add' to continue");
+
                 }
             }
             else if (userInput == "2")
             {
                 // Show Shopping Cart
-                if ((myCart.CartList != null) && (!myCart.CartList.Any()) )
+                //myMenu.ClearConsoleKOTRM();
+                if ((myCart.CartList != null) && (!myCart.CartList.Any()))
                 {
-                    Console.WriteLine("The cart is currently empty.");
+                    Console.WriteLine("the cart is currently empty.");
                 }
-                else 
+                else
                 {
                     myCart.PrintCart(myCart.CartList);
                 }
