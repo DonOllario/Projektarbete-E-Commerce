@@ -45,7 +45,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 catch (Exception)
                 {
 
-                    input = 6;
+                    input = 0;
                 }
                 
                 switch (input)
