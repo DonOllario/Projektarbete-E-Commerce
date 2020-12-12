@@ -68,7 +68,8 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void Checkout()
         {
-            Console.WriteLine("HejHejCheckout");
+            //Order MyOrder = new Order(CartList, null, null);
+            //MyOrder.PrintReciept();
         }
     }
 }
