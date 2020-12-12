@@ -10,7 +10,7 @@ namespace Projektarbete_E_Commerce_KOTR
     {
         MenuHandler myMenu = new MenuHandler();
 
-        public void SignIn()
+        public void LogIn()
         {
             Console.WriteLine("Enter your 'username': ");
             string username = Console.ReadLine();
