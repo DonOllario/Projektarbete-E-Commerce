@@ -8,163 +8,222 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     class Order
     {
-        public double TotalPrice;
-        public int OrderID;
-        public string DeliveryAdress;
-        /*public List<ProductLine> OrderLines;*/
-        public bool Invoice = false;
-        public bool CreditCard = false;
-        public string NameOnCard;
-        public int CreditCardNumber;
-        public int CVCcode;
-        public string NameOnInvoice;
-        public string InvoiceAdress;
+        private double TotalPrice;
+        private int OrderID = 1234567890;
+        private string DeliveryAdress;
+        private List<ProductLine> OrderLines;
+        private bool Invoice = false;
+        private bool CreditCard = false;
+        private string NameOnCard;
+        private string CreditCardNumber; //Är satt som string eftersom det är 16 nummer och det blir för stort för int.
+        private string CVCcode; //Är också satt som string för att felhanteringen i metoden är samma som för CreditCardNumber. Se SetCVCcode
+        private string NameOnInvoice;
+        private string InvoiceAdress;
+        private bool PaymentCheck;
 
-        public Order(/*List<ProductLine> productLines,*/ string userAdress, string userName, int shoppingCartID)
+        MenuHandler MyHandler = new MenuHandler();
+
+        public Order(List<ProductLine> cartList, string accountAdress, string accountName) //Konstruktor som skapar en order Alla metoder körs internt.
         {
-            OrderID = shoppingCartID;
-            /*OrderLines = productLines;*/
-            /*CalcTotalPrice(productLines);*/
-            if (userAdress != null)
+            MyHandler.ClearConsoleKOTRM();
+            OrderID++; // Skapar ett nytt unikt ordernummer varje gång.
+            OrderLines = cartList; // Tar all info från de ProductLine som finns i CartList, döper om dem till OrderLines för tydlighetens skull.
+            TotalPrice = CalcTotalPrice(cartList); // Räknar ut totalpriset på ordern
+            MyHandler.ClearConsoleKOTRM(); 
+            if (accountAdress != null) // IF-sats som kollar om användaren är inloggad eller inte. Om man inte är det frågar programmet efter info som behövs.
             {
-                DeliveryAdress = userAdress;
+                DeliveryAdress = accountAdress;
             }
             else
             {
-                GetAdressFromUserThroughInput();
+                SetDeliveryAdress();
             }
-            int payment = GetPaymentChoiseFromUser();
-            if (payment == 1)
+            while (PaymentCheck == false) // loopar sålänge betalningen inte gått igenom.
             {
-                NameOnCard = GetNameOnCard();
-                CreditCardNumber = GetCreditCardNumber();
-                CVCcode = GetCVCcode();
-                CheckAccountBalance(TotalPrice);
-                CreditCard = true;
-            }
-            else if(payment == 2)
-            {
-                NameOnInvoice = GetNameOnInvoice(userName);
-                InvoiceAdress = GetInvoiceAdress(userAdress);
-                Invoice = true;
+                string payment = SetPaymentChoise(); //Ber användaren välja betalningsmetod
+                if (payment == "1")
+                {
+                    NameOnCard = SetNameOnCard(); //Ber om kortnamn
+                    CreditCardNumber = SetCreditCardNumber(); //Ber om kortnummer
+                    CVCcode = SetCVCcode(); //Ber om cvc-koden
+                    if (CheckAccountBalance(TotalPrice) == false)//Kollar med banken om det finns pengar på kortet eller inte
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("You dont have enough money on your card. Please try another payment method.");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        CreditCard = true; //Sätter betalningsmetoden för ordern till kreditkort
+                        PaymentCheck = true;
+                    }
+                }
+                else if (payment == "2")
+                {
+                    NameOnInvoice = SetNameOnInvoice(accountName); //Ber fakturanamn om kunden inte är inloggad
+                    InvoiceAdress = SetInvoiceAdress(accountAdress);//Ber om faktura adress, dubbelkollar om det är samma om man är inloggad
+                    Invoice = true;//Sätter betalningsmetoden för ordern till faktura
+                    PaymentCheck = true;
+                }
             }
         }
 
-        /*public void CalcTotalPrice(List<ProductLine> productLines)
+        private double CalcTotalPrice(List<ProductLine> cartList)//Räknar ut totalpris
         {
             double totalPrice = 0;
-            foreach (ProductLine p in productLines)
+            for(int i = 0; i < cartList.Count; i++)
             {
-                totalPrice += productLines[p].Price;
+                totalPrice += cartList[i].PricePerLine;
             }
-            TotalPrice = totalPrice;
-        }*/
+            return totalPrice;
+        }
 
-        public void GetAdressFromUserThroughInput()
+        private void SetDeliveryAdress()//Sätter leveransadressen
         {
             string adress;
-            Console.Write("Vänligen ange leveransadressen: ");
+            MyHandler.ClearConsoleKOTRM();
+            Console.Write("Enter the delivery adress: ");
             adress = Console.ReadLine();
             DeliveryAdress = adress;
         }
 
-        public int GetPaymentChoiseFromUser()
+        private string SetPaymentChoise()// Sätter betalningsmetoden
         {
-            Console.Clear();
+            MyHandler.ClearConsoleKOTRM();
             Console.WriteLine("Choose your payment method.{0}1. Credit card.{0}2. Invoice.", Environment.NewLine);
-            int paymentChoise = 0;
-            while (paymentChoise != 1 && paymentChoise != 2)
+            string paymentChoise = "0";
+            while (paymentChoise != "1" && paymentChoise != "2")
             {
-                paymentChoise = int.Parse(Console.ReadLine());
-                switch (paymentChoise)
+                paymentChoise = Console.ReadLine();
+                if(paymentChoise != "1" && paymentChoise != "2")
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("You need to enter 1 or 2.");
-                        break;
+                    Console.WriteLine("You need to enter 1 or 2.");
                 }
             }
             return paymentChoise;
         }
-        public string GetNameOnCard()
+        private string SetNameOnCard()//Sätter kortnamn
         {
+            MyHandler.ClearConsoleKOTRM();
             Console.WriteLine("Please enter the following information.");
             Console.Write("Name on card: ");
             string nameOnCard = Console.ReadLine();
             return nameOnCard;
         }
-        public int GetCreditCardNumber()
+        private string SetCreditCardNumber()//Sätter kortnummer
         {
-            int creditCardNumber = 0;
-            while (Convert.ToString(creditCardNumber).Length != 16)
+            string creditCardNumber = " ";
+            while (creditCardNumber.Length != 16)//kollar så kortnummret är 16 nummer
             {
-                Console.Write("Credit card number: ");
-                CreditCardNumber = int.Parse(Console.ReadLine());
-                if (Convert.ToString(creditCardNumber).Length != 16)
+                Console.Write("Credit card number (16 digits and no spaces): ");
+                creditCardNumber = Console.ReadLine();
+                if(creditCardNumber.Length != 16)
                 {
-                    Console.Clear();
+                    MyHandler.ClearConsoleKOTRM();
                     Console.WriteLine("You need to enter the number with 16 digits and no spaces. Press enter once and try again.");
+                }
+                else
+                {
+                    foreach(char c in creditCardNumber)
+                    {
+                        if(Char.IsLetter(c)) //Kollar så det bara är siffror man matar in
+                        {
+                            MyHandler.ClearConsoleKOTRM();
+                            Console.WriteLine("Credit card numbers can only contain numbers. Press enter once and try again.");
+                            break;
+                        }
+                    }
                 }
             }
             return creditCardNumber;
         }
-        public int GetCVCcode()
+        private string SetCVCcode()
         {
-            int cvcCode = 0;
-            while (Convert.ToString(cvcCode).Length != 3)
+            string cvcCode = " ";
+            while(cvcCode.Length != 3)//Kollar så inmatningen är 3 siffror
             {
-                Console.Write("CVC-code: ");
-                CVCcode = int.Parse(Console.ReadLine());
-                if (Convert.ToString(cvcCode).Length != 3)
+                Console.Write("CVC-code (3-digits): ");
+                cvcCode = Console.ReadLine();
+                if (cvcCode.Length != 3)
                 {
-                    Console.Clear();
-                    Console.WriteLine("The CVC-code is 3 digits. Press enter once and try again.");
+                    MyHandler.ClearConsoleKOTRM();
+                    Console.WriteLine("The CVC-code is 3 digits. Please try again.");
+                }
+                else
+                {
+                    foreach (char c in cvcCode)
+                    {
+                        if (Char.IsLetter(c))//Kollar så det bara är siffror man matar in
+                        {
+                            MyHandler.ClearConsoleKOTRM();
+                            Console.WriteLine("CVC-codes can only contain numbers. Please try again.");
+                            break;
+                        }
+                    }
                 }
             }
             return cvcCode;
         }
-        public string GetNameOnInvoice(string userName)
+        private string SetNameOnInvoice(string accountName)//Sätter fakturanamn och kollar om det är samma som användaren matat in
         {
+            MyHandler.ClearConsoleKOTRM();
             string invoiceName;
-            if(userName != null)
+            if(accountName == null)
             {
                 Console.Write("Enter the name that should be put on the invoice: ");
                 invoiceName = Console.ReadLine();
             }
             else
             {
-                invoiceName = userName;
+                invoiceName = accountName;
             }
             return invoiceName;
         }
-        public string GetInvoiceAdress(string userAdress)
+        private string SetInvoiceAdress(string accountAdress)// Sätter fakturaadress och kollar om det är samma som användaren matat in
         {
             string invoiceAdress;
-            if (userAdress != null)
+            if (accountAdress == null)
             {
-                Console.Write("Enter the adress that we should sent the invoice too: ");
+                Console.Write("Enter the adress that we should send the invoice too: ");
                 invoiceAdress = Console.ReadLine();
             }
             else
             {
-                invoiceAdress = userAdress;
+                invoiceAdress = accountAdress;
             }
             return invoiceAdress;
         }
-        public bool CheckAccountBalance(double totalPrice)
+        private bool CheckAccountBalance(double totalPrice) //kollar om man har pengar på kortet och returnerar true eller false.
         {
-            bool balance = false;
-            Bank bank1 = new Bank();
-            balance = bank1.CheckPayment(totalPrice);
-            if (balance == false)
-            {
-                Console.WriteLine("You dont have enough money on you bank account. Please try another payment method.");
-            }
+            Bank TheBank = new Bank();
+            bool balance = TheBank.CheckPayment(totalPrice);
             return balance;
+        }
+        public void PrintReciept()
+        {
+            MyHandler.ClearConsoleKOTRM();
+            Console.WriteLine($"Thank you for your order! The order number is: {OrderID}");
+            Console.WriteLine("This is your reciept.");
+            Console.WriteLine(" ");
+            for(int p = 0; p < OrderLines.Count; p++)
+            {
+                Console.WriteLine($"ID: {OrderLines[p].ID} - {OrderLines[p].ProductName} - {OrderLines[p].Description} - Quantity: {OrderLines[p].Quantity} Price: {OrderLines[p].PricePerLine}:-");
+            }
+            Console.WriteLine(" ");
+            Console.WriteLine($"Delivery adress: {DeliveryAdress}");
+            Console.WriteLine(" ");
+            Console.WriteLine($"Total price: {TotalPrice}:-");
+            Console.WriteLine(" ");
+            string payment = " ";
+            if(Invoice == true)
+            {
+                payment = "Invoice";
+            }
+            else if(CreditCard == true)
+            {
+                payment = "Credit Card";
+            }
+            Console.WriteLine($"Payment: {payment}");
         }
     }
 }

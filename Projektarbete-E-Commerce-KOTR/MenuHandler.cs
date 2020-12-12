@@ -20,7 +20,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 menuOptions.Add("----- KOTRM Online Shop -----");
                 menuOptions.Add("1. Browse our Catalogue.");
                 menuOptions.Add("2. Show Shopping Cart.");
-                menuOptions.Add("3. Sign up / Log in.");
+                menuOptions.Add("3. Sign Up / Log in.");
                 menuOptions.Add(" - Type Close to Exit.");
                 displayMenuSaved = true;
             }

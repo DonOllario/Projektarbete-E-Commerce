@@ -10,9 +10,10 @@ namespace Projektarbete_E_Commerce_KOTR
     {
         string CartID { get; }
         int DateAdded { get; set; }
-
         MenuHandler myMenu = new MenuHandler();
         public List<ProductLine> CartList = new List<ProductLine>();
+
+
         private static int CartIDSeed = 1234567890;
 
         public ShoppingCart() 
@@ -42,8 +43,17 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.WriteLine(cartList[i].PrintProductLine());
             }
-            Console.WriteLine("\n 1. Checkout");
-            Console.WriteLine("\n 2. Go Back");
+            double Total = 0;
+            for (int i = 0; i < cartList.Count; i++)
+            {
+                Total = Total + cartList[i].PricePerLine;
+
+            }
+            Console.WriteLine("\n*************************");
+            Console.WriteLine($"\nTotal: {Total}:-");
+
+            Console.WriteLine("\n1. Checkout");
+            Console.WriteLine("2. Go Back");
             int input = Convert.ToInt32(Console.ReadLine());
             while (true)
             {
@@ -67,7 +77,12 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void Checkout()
         {
-            Console.WriteLine("HejHejCheckout");
+            Order MyOrder = new Order(CartList, null, null);
+            MyOrder.PrintReciept();
+            Console.WriteLine("\n--Press any key to continue shopping.--");
+            Console.ReadKey();
+            myMenu.GoBack();
+            CartList.Clear();
         }
     }
 }

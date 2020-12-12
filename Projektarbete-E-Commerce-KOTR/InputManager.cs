@@ -22,10 +22,10 @@ namespace Projektarbete_E_Commerce_KOTR
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM();
                 HandleClothes.AllCategories();
-                HandleClothes.FilterCategory2(Clothes.Products());
-                Console.WriteLine("-Add product to cart-");
-                Console.WriteLine("Type >Add< to add product to cart");
-                Console.WriteLine("Type >Back< to return to menu");
+                HandleClothes.FilterCategory(Clothes.Products());
+                Console.WriteLine("****************************************************");
+                Console.WriteLine("\n-Type >Add< to add product to cart");
+                Console.WriteLine("\n-Type >Back< to return to menu");
                 while (true)
                 {
                     userInput = Console.ReadLine();
@@ -41,7 +41,7 @@ namespace Projektarbete_E_Commerce_KOTR
                         break;
                     }
                     else
-                        Console.WriteLine("Incorrect Input, Please type 'Add' to continue");
+                        Console.WriteLine("Incorrect Input, Please type 'Add' or 'Back' to continue");
 
                 }
             }
@@ -66,11 +66,11 @@ namespace Projektarbete_E_Commerce_KOTR
 
                 while (true)
                 {
-                    String signInInput = Console.ReadLine();
+                    String signUpInput = Console.ReadLine();
 
-                    if (signInInput == "1" || signInInput == "2" || signInInput == "3")
+                    if (signUpInput == "1" || signUpInput == "2" || signUpInput == "3")
                     {
-                        signUp.HandleSignIn(signInInput);
+                        signUp.HandleSignUp(signUpInput);
                         break;
                     }
                     else

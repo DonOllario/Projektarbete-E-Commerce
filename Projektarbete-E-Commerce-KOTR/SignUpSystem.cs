@@ -8,27 +8,28 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     public class SignUpSystem
     {
-        MenuHandler myMenu = new MenuHandler();
-        public void HandleSignIn(String SignInInput)
+        public void HandleSignUp(String SignInInput)
         {
             MenuHandler myMenu = new MenuHandler();
-            User konto = new User();
+            Account Konto = new Account();
 
             if (SignInInput == "1")
             {
                 //Sign Up
-                Console.WriteLine("Sign Up");
-                konto.signup();
-                Console.WriteLine("Enter 3 to go back");
+                myMenu.ClearConsoleKOTRM();
+                Console.WriteLine("          -Sign Up-\n");
+                Konto.SignUp();
+                Console.WriteLine("Enter 3 to go back"); // Om det går, kanske ändra så att man skriver in något annat än 3? Kan kännas lite konstigt
             }
             else if (SignInInput == "2")
             {
                 //Log in
-                Console.WriteLine("Log in");
-                konto.SignIn();
-                Console.WriteLine("Enter 3 to go back");
+                myMenu.ClearConsoleKOTRM();
+                Console.WriteLine("          -Log in-\n");
+                Konto.LogIn();
+                Console.WriteLine("Enter 3 to go back"); // Om det går, kanske ändra så att man skriver in något annat än 3? Kan kännas lite konstigt
             }
-            else if (SignInInput == "3")
+            else if (SignInInput == "3") // Om det går, kanske ändra så att man skriver in något annat än 3? Kan kännas lite konstigt
             {
                 //Go back
                 myMenu.GoBack();

@@ -8,7 +8,7 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     class HandleProducts
     {
-        public string sSearch;
+        
         public string idSearch;
         MenuHandler MyMenu = new MenuHandler();
         Product Products = new Product();
@@ -31,91 +31,95 @@ namespace Projektarbete_E_Commerce_KOTR
             }
         }
 
-        /*public void FilterCategory(List<Product> Products)
+        public void FilterCategory(List<Product> Products) 
         {
             
-            Console.WriteLine("Choose category:");
-            sSearch = Console.ReadLine();
-            for (int i = 0; i < Products.Count; i++)
+            int input = 0;
+            int[] CategoryChoices = { 1, 2, 3, 4, 5 };
+            while(!CategoryChoices.Contains(input)) 
             {
-                if (Products[i].category.Equals(sSearch))
+                try
                 {
-                    Console.WriteLine(Products[i].PrintName()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                    Console.WriteLine();
+                    input = Convert.ToInt32(Console.ReadLine());
                 }
-            }
-        }*/
-        public void FilterCategory2(List<Product> Products) 
-        {
-            
-            int input = Convert.ToInt32(Console.ReadLine());
-            MyMenu.ClearConsoleKOTRM();
-            switch (input)
-            {
-                case 1:
-                    Console.WriteLine("Shirts: ");
-                    string CatVar1 = "Shirts";
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        if (Products[i].category.Equals(CatVar1))
+                catch (Exception)
+                {
+
+                    input = 0;
+                }
+                
+                switch (input)
+                {
+                    case 1:
+                        MyMenu.ClearConsoleKOTRM();
+                        Console.WriteLine("Shirts: ");
+                        string CatVar1 = "Shirts";
+                        for (int i = 0; i < Products.Count; i++)
                         {
-                            Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                            Console.WriteLine();
+                            if (Products[i].category.Equals(CatVar1))
+                            {
+                                Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
+                                Console.WriteLine();
+                            }
                         }
-                    }
-                    break;
-                case 2:
-                    Console.WriteLine();
-                    Console.WriteLine("Pants: ");
-                    string CatVar2 = "Pants";
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        if (Products[i].category.Equals(CatVar2))
+                        break;
+                    case 2:
+                        MyMenu.ClearConsoleKOTRM();
+                        Console.WriteLine("Pants: ");
+                        string CatVar2 = "Pants";
+                        for (int i = 0; i < Products.Count; i++)
                         {
-                            Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                            Console.WriteLine();
+                            if (Products[i].category.Equals(CatVar2))
+                            {
+                                Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
+                                Console.WriteLine();
+                            }
                         }
-                    }
-                    break;
-                case 3:
-                    Console.WriteLine("Glasses: ");
-                    string CatVar3 = "Glasses";
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        if (Products[i].category.Equals(CatVar3))
+                        break;
+                    case 3:
+                        MyMenu.ClearConsoleKOTRM();
+                        Console.WriteLine("Glasses: ");
+                        string CatVar3 = "Glasses";
+                        for (int i = 0; i < Products.Count; i++)
                         {
-                            Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                            Console.WriteLine();
+                            if (Products[i].category.Equals(CatVar3))
+                            {
+                                Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
+                                Console.WriteLine();
+                            }
                         }
-                    }
-                    break;
-                case 4:
-                    Console.WriteLine("Sweaters: ");
-                    string CatVar4 = "Sweaters";
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        if (Products[i].category.Equals(CatVar4))
+                        break;
+                    case 4:
+                        MyMenu.ClearConsoleKOTRM();
+                        Console.WriteLine("Sweaters: ");
+                        string CatVar4 = "Sweaters";
+                        for (int i = 0; i < Products.Count; i++)
                         {
-                            Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                            Console.WriteLine();
+                            if (Products[i].category.Equals(CatVar4))
+                            {
+                                Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
+                                Console.WriteLine();
+                            }
                         }
-                    }
-                    break;
-                case 5:
-                    Console.WriteLine("Hats: ");
-                    string CatVar5 = "Hats";
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        if (Products[i].category.Equals(CatVar5))
+                        break;
+                    case 5:
+                        MyMenu.ClearConsoleKOTRM();
+                        Console.WriteLine("Hats: ");
+                        string CatVar5 = "Hats";
+                        for (int i = 0; i < Products.Count; i++)
                         {
-                            Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
-                            Console.WriteLine();
+                            if (Products[i].category.Equals(CatVar5))
+                            {
+                                Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
+                                Console.WriteLine();
+                            }
                         }
-                    }
-                    break;
-                default:
-                    Console.WriteLine("You need to enter 1-5.");
-                    break;
+                        break;
+                    default:
+                        input = 0;
+                        Console.WriteLine("You need to enter 1-5.");
+                        break;
+                }
             }
         }
 

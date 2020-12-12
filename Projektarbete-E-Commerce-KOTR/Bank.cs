@@ -12,12 +12,17 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public bool CheckPayment(double totalPrice)
         {
-            bool paymentOkOrNot = false;
+            bool paymentOkOrNot;
             if(totalPrice >= AccountBalance)
             {
-                paymentOkOrNot = true;
+                paymentOkOrNot = false;
+                return paymentOkOrNot;
             }
-            return paymentOkOrNot;
+            else
+            {
+                paymentOkOrNot = true;
+                return paymentOkOrNot;
+            }
         }
     }
 }
