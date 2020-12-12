@@ -208,7 +208,7 @@ namespace Projektarbete_E_Commerce_KOTR
             Console.WriteLine(" ");
             for(int p = 0; p < OrderLines.Count; p++)
             {
-                Console.WriteLine($"{OrderLines[p].Name} - {OrderLines[p].PricePerLine}:-");
+                Console.WriteLine($"{OrderLines[p].ProductName} - {OrderLines[p].PricePerLine}:-");
             }
             Console.WriteLine(" ");
             Console.WriteLine($"Delivery adress: {DeliveryAdress}");
