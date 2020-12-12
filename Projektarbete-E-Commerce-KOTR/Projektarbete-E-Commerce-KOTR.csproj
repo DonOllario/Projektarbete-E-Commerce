@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InputManager.cs" />
-    <Compile Include="konto.cs" />
+    <Compile Include="Konto.cs" />
     <Compile Include="MenuHandler.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Order.cs" />

@@ -60,11 +60,11 @@ namespace Projektarbete_E_Commerce_KOTR
 
                 while (true)
                 {
-                    String signInInput = Console.ReadLine();
+                    String signUpInput = Console.ReadLine();
 
-                    if (signInInput == "1" || signInInput == "2" || signInInput == "3")
+                    if (signUpInput == "1" || signUpInput == "2" || signUpInput == "3")
                     {
-                        signUp.HandleSignIn(signInInput);
+                        signUp.HandleSignUp(signUpInput);
                         break;
                     }
                     else
