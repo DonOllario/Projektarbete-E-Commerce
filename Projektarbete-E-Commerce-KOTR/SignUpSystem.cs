@@ -12,7 +12,7 @@ namespace Projektarbete_E_Commerce_KOTR
         public void HandleSignIn(String SignInInput)
         {
             MenuHandler myMenu = new MenuHandler();
-            konto konto = new konto();
+            User konto = new User();
 
             if (SignInInput == "1")
             {

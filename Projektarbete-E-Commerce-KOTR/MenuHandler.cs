@@ -33,7 +33,7 @@ namespace Projektarbete_E_Commerce_KOTR
             if (!signInMenuSaved)
             {
                 signInOptions.Add("----- KOTRM Online Shop -----");
-                signInOptions.Add("1. Sign In");
+                signInOptions.Add("1. Sign Up");
                 signInOptions.Add("2. Log In");
                 signInOptions.Add("3. Go Back");
                 signInMenuSaved = true;

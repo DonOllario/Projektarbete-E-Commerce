@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class konto
+    class User
     {
         public void SignIn()
         {
@@ -30,7 +30,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     string Adress = Console.ReadLine();
                     Console.WriteLine("Enter your E-mail adress :");
                     string Email = Console.ReadLine();
-                    Console.WriteLine("phon number");
+                    Console.WriteLine("Enter Phonenumber : ");
                     string Phonenumber = Console.ReadLine();
                     Console.WriteLine("****************************");
                     Console.WriteLine(" Welcome  " + user + " this is your Informations ");
@@ -38,7 +38,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     Console.WriteLine(" Adress : " + Adress);
                     Console.WriteLine(" Email : " + Email);
                     Console.WriteLine(" Phonenumber : " + Phonenumber);
-                    Console.WriteLine("If you want Eidt your Info Write 'Edit' : ");
+                    Console.WriteLine("If you want Edit your Info Write 'Edit' : ");
                     Edit = Console.ReadLine();
                 } while (Edit == "Edit");
                
