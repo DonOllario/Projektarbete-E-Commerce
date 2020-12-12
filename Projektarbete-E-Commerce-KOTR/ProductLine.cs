@@ -35,7 +35,7 @@ namespace Projektarbete_E_Commerce_KOTR
         public Product GetProductForCart(List<Product> Products)
         {
             Product ProductForCart = new Product();
-            Console.WriteLine("Type in the wanted product ID.");
+            Console.WriteLine("\n-Type in the wanted product ID.");
             while (true)
             {
                 int prodID;
@@ -72,7 +72,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public int GetProductLineQuantity() 
         {
-            Console.WriteLine("How many would you like to buy?");
+            Console.WriteLine("\n-How many would you like to buy?");
             while (true)
             {
                 int quantity;

@@ -25,8 +25,8 @@ namespace Projektarbete_E_Commerce_KOTR
         public void AddProductLine()//Addera den produkt användaren har valt till CartList.
         {
             CartList.Add(new ProductLine());
-            Console.WriteLine("You have added the product successfully to the shopping cart!");
-            Console.WriteLine("Press any key to continue shopping.");
+            Console.WriteLine("\n  ******************** \\O/ You have successfully added the product to the shopping cart! \\O/ ********************");
+            Console.WriteLine("                                         Press any key to continue shopping.");
             Console.ReadKey();
             myMenu.GoBack();
         }
@@ -89,7 +89,7 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             Order MyOrder = new Order(CartList, null, null);
             MyOrder.PrintReciept();
-            Console.WriteLine("\n--Press any key to continue shopping.--");
+            Console.WriteLine("\n**********************************************************************************\n\n-Press any key to continue shopping.");
             Console.ReadKey();
             myMenu.GoBack();
             CartList.Clear();

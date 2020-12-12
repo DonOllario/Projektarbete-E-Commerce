@@ -202,8 +202,10 @@ namespace Projektarbete_E_Commerce_KOTR
         public void PrintReciept()
         {
             MyHandler.ClearConsoleKOTRM();
-            Console.WriteLine($"Thank you for your order! The order number is: {OrderID}");
-            Console.WriteLine("This is your reciept.");
+            DateTime localDate = DateTime.Now;
+            Console.WriteLine($"Your order was added: {localDate}");
+            Console.WriteLine($"Thank you for your order! Your order number is: {OrderID}");
+            Console.WriteLine("\nThis is your receipt:");
             Console.WriteLine(" ");
             for(int p = 0; p < OrderLines.Count; p++)
             {
