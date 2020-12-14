@@ -22,7 +22,7 @@ namespace Projektarbete_E_Commerce_KOTR
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM();
                 HandleClothes.AllCategories();
-                HandleClothes.FilterCategory(Clothes.Products());
+                HandleClothes.FilterCategory(Clothes.diffCats, Clothes.Products());
                 Console.WriteLine("****************************************************");
                 Console.WriteLine("\n-Type >Add< to add product to cart");
                 Console.WriteLine("\n-Type >Back< to return to menu");

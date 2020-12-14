@@ -26,7 +26,7 @@ namespace Projektarbete_E_Commerce_KOTR
         public Order(List<ProductLine> cartList, string accountAdress, string accountName) //Konstruktor som skapar en order Alla metoder körs internt.
         {
             MyHandler.ClearConsoleKOTRM();
-            OrderID++; // Skapar ett nytt unikt ordernummer varje gång.
+            OrderID++; // Skapar ett nytt unikt ordernummer varje gång. <--- Men fungerar inte just nu 
             OrderLines = cartList; // Tar all info från de ProductLine som finns i CartList, döper om dem till OrderLines för tydlighetens skull.
             TotalPrice = CalcTotalPrice(cartList); // Räknar ut totalpriset på ordern
             MyHandler.ClearConsoleKOTRM(); 

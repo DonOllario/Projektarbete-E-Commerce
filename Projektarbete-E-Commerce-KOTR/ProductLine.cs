@@ -21,7 +21,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public ProductLine() //Skapar kundkorgsraden
         {
-            Product ChosenProduct = GetProductForCart(ProductReference.Products()); // Hämtar artikeln som ska läggas till.
+            Product ChosenProduct = GetProductForCart(ProductReference.diffCats, ProductReference.Products()); // Hämtar artikeln som ska läggas till.
             Quantity = GetProductLineQuantity();
             PricePerLine = Quantity * ChosenProduct.price;
             ProductName = ChosenProduct.name;
@@ -32,7 +32,7 @@ namespace Projektarbete_E_Commerce_KOTR
             
         }
 
-        public Product GetProductForCart(List<Product> Products)
+        public Product GetProductForCart(string[] diffcats, List<Product> Products)
         {
             Product ProductForCart = new Product();
             Console.WriteLine("\n-Type in the wanted product ID.");
@@ -49,8 +49,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     prodID = 0;
                 }
                 
-                int[] CategoryChoices = { 1, 2, 3, 4, 5, 6 };
-                if (CategoryChoices.Contains(prodID))
+                if (prodID <= diffcats.Length && prodID >= 1)
                 {
                     
                     for (int i = 0; i < Products.Count; i++)
@@ -101,22 +100,5 @@ namespace Projektarbete_E_Commerce_KOTR
             return "\nID: " + ID + "\nName: " + ProductName + "\nPrice: " + Price + ":-" + "\nDescription: " + Description + "\nCategory: " + Category + "\n\nQuantity: " + Quantity + "\nProduct Total: " + PricePerLine + ":-";
         }
 
-        public void RemoveProduct(List<Product> ProductLines)
-        {
-            Console.WriteLine("Enter the ID of the product you want to remove.");
-            int prodID = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < ProductLines.Count; i++)
-            {
-                if (ProductLines[i].id.Equals(prodID))
-                {
-                    Console.WriteLine("Enter the quantity you want to remove.");
-                    ProductReference.quantity = Convert.ToInt32(Console.ReadLine());
-                    ProductReference.LinePrice = ProductLines[i].price * ProductReference.quantity;
-
-                    ProductLines.Remove(ProductLines[i]);
-                }
-            }
-
-        }
     }
 }
