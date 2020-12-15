@@ -64,7 +64,6 @@ namespace Projektarbete_E_Commerce_KOTR
                 }
                 else if (input == 2)
                 {
-                    //Go back
                     myMenu.GoBack();
                     break;
                 }
@@ -77,9 +76,9 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void Checkout()
         {
-            Order MyOrder = new Order(CartList, null, null);
-            MyOrder.PrintReciept();
-            Console.WriteLine("\n--Press any key to continue shopping.--");
+            Order MyOrder = new Order(CartList, Account.Adress, Account.Name);
+            MyOrder.PrintReceipt();
+            Console.WriteLine("\n**********************************************************************************\n\n-Press any key to continue shopping.");
             Console.ReadKey();
             myMenu.GoBack();
             CartList.Clear();

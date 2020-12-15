@@ -9,7 +9,7 @@ namespace Projektarbete_E_Commerce_KOTR
     class Order
     {
         private double TotalPrice;
-        private int OrderID = 1234567890;
+        static private int OrderID = 1234567890;
         private string DeliveryAdress;
         private List<ProductLine> OrderLines;
         private bool Invoice = false;
@@ -29,7 +29,7 @@ namespace Projektarbete_E_Commerce_KOTR
             OrderID++; // Skapar ett nytt unikt ordernummer varje gång.
             OrderLines = cartList; // Tar all info från de ProductLine som finns i CartList, döper om dem till OrderLines för tydlighetens skull.
             TotalPrice = CalcTotalPrice(cartList); // Räknar ut totalpriset på ordern
-            MyHandler.ClearConsoleKOTRM(); 
+            MyHandler.ClearConsoleKOTRM();
             if (accountAdress != null) // IF-sats som kollar om användaren är inloggad eller inte. Om man inte är det frågar programmet efter info som behövs.
             {
                 DeliveryAdress = accountAdress;
@@ -71,7 +71,7 @@ namespace Projektarbete_E_Commerce_KOTR
         private double CalcTotalPrice(List<ProductLine> cartList)//Räknar ut totalpris
         {
             double totalPrice = 0;
-            for(int i = 0; i < cartList.Count; i++)
+            for (int i = 0; i < cartList.Count; i++)
             {
                 totalPrice += cartList[i].PricePerLine;
             }
@@ -95,7 +95,7 @@ namespace Projektarbete_E_Commerce_KOTR
             while (paymentChoise != "1" && paymentChoise != "2")
             {
                 paymentChoise = Console.ReadLine();
-                if(paymentChoise != "1" && paymentChoise != "2")
+                if (paymentChoise != "1" && paymentChoise != "2")
                 {
                     Console.WriteLine("You need to enter 1 or 2.");
                 }
@@ -117,16 +117,16 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 Console.Write("Credit card number (16 digits and no spaces): ");
                 creditCardNumber = Console.ReadLine();
-                if(creditCardNumber.Length != 16)
+                if (creditCardNumber.Length != 16)
                 {
                     MyHandler.ClearConsoleKOTRM();
                     Console.WriteLine("You need to enter the number with 16 digits and no spaces. Press enter once and try again.");
                 }
                 else
                 {
-                    foreach(char c in creditCardNumber)
+                    foreach (char c in creditCardNumber)
                     {
-                        if(Char.IsLetter(c)) //Kollar så det bara är siffror man matar in
+                        if (Char.IsLetter(c)) //Kollar så det bara är siffror man matar in
                         {
                             MyHandler.ClearConsoleKOTRM();
                             Console.WriteLine("Credit card numbers can only contain numbers. Press enter once and try again.");
@@ -140,7 +140,7 @@ namespace Projektarbete_E_Commerce_KOTR
         private string SetCVCcode()
         {
             string cvcCode = " ";
-            while(cvcCode.Length != 3)//Kollar så inmatningen är 3 siffror
+            while (cvcCode.Length != 3)//Kollar så inmatningen är 3 siffror
             {
                 Console.Write("CVC-code (3-digits): ");
                 cvcCode = Console.ReadLine();
@@ -168,7 +168,7 @@ namespace Projektarbete_E_Commerce_KOTR
         {
             MyHandler.ClearConsoleKOTRM();
             string invoiceName;
-            if(accountName == null)
+            if (accountName == null)
             {
                 Console.Write("Enter the name that should be put on the invoice: ");
                 invoiceName = Console.ReadLine();
@@ -199,13 +199,15 @@ namespace Projektarbete_E_Commerce_KOTR
             bool balance = TheBank.CheckPayment(totalPrice);
             return balance;
         }
-        public void PrintReciept()
+        public void PrintReceipt()
         {
             MyHandler.ClearConsoleKOTRM();
-            Console.WriteLine($"Thank you for your order! The order number is: {OrderID}");
-            Console.WriteLine("This is your reciept.");
+            DateTime localDate = DateTime.Now;
+            Console.WriteLine($"Your order was added: {localDate}");
+            Console.WriteLine($"Thank you for your order! Your order number is: {OrderID}");
+            Console.WriteLine("\nThis is your receipt:");
             Console.WriteLine(" ");
-            for(int p = 0; p < OrderLines.Count; p++)
+            for (int p = 0; p < OrderLines.Count; p++)
             {
                 Console.WriteLine($"ID: {OrderLines[p].ID} - {OrderLines[p].ProductName} - {OrderLines[p].Description} - Quantity: {OrderLines[p].Quantity} Price: {OrderLines[p].PricePerLine}:-");
             }
@@ -215,11 +217,11 @@ namespace Projektarbete_E_Commerce_KOTR
             Console.WriteLine($"Total price: {TotalPrice}:-");
             Console.WriteLine(" ");
             string payment = " ";
-            if(Invoice == true)
+            if (Invoice == true)
             {
                 payment = "Invoice";
             }
-            else if(CreditCard == true)
+            else if (CreditCard == true)
             {
                 payment = "Credit Card";
             }
