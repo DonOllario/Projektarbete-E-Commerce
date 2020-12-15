@@ -40,21 +40,12 @@ namespace Projektarbete_E_Commerce_KOTR
                 {
                     Console.WriteLine("\n*************");
                     input = Console.ReadLine();
-                    input = input.ToLower();
+                    input = input.Substring(0, 1).ToUpper() + input.Substring(1);
                 }
                 catch (Exception)
                 {
 
                     input = "";
-                }
-
-                for (int i = 0; i < Products.Count; i++)
-                {
-                    Products[i].category = Products[i].category.ToLower();
-                }
-                for (int i = 0; i < diffcats.Length; i++)
-                {
-                    diffcats[i] = diffcats[i].ToLower();
                 }
 
                 if (diffcats.Contains(input))
@@ -64,23 +55,12 @@ namespace Projektarbete_E_Commerce_KOTR
                     {
                         if (Products[i].category.Equals(input))
                         {
+                            
                             Console.WriteLine();
                             Console.WriteLine(Products[i].PrintProducts()); // Skriver ut namn på alla produkter i kategorin som passar sökordet
                             Console.WriteLine();
                             
                         }
-                    }
-
-                    string[] TempArray = new string[Products.Count];
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        TempArray[i] = Products[i].category;
-                        TempArray[i] = TempArray[i].Substring(1, 1).ToUpper();
-                        Products[i].category = TempArray[i];
-                    }
-                    for (int i = 0; i < diffcats.Length; i++)
-                    {
-                        diffcats[i] = diffcats[i].Substring(0, 0).ToUpper();
                     }
                     break;
                 }
@@ -107,14 +87,12 @@ namespace Projektarbete_E_Commerce_KOTR
                 }
             }
         }
-        public void AllCategories() // Skriver ut alla kategorier
+        public void AllCategories(string[] diffcats) // Skriver ut alla kategorier
         {
-            Products.Categories.AddRange(Products.diffCats);
             Console.WriteLine("Type in one of the categories: \n");
-            for (int i = 0; i < Products.diffCats.Length; i++)
+            for (int i = 0; i < diffcats.Length; i++)
             {
-                Console.WriteLine(Products.Categories[i]);
-
+                Console.WriteLine(diffcats[i]);
             }
         }
     }

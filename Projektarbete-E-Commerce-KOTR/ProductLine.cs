@@ -21,7 +21,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public ProductLine() //Skapar kundkorgsraden
         {
-            Product ChosenProduct = GetProductForCart(ProductReference.diffCats, ProductReference.Products()); // Hämtar artikeln som ska läggas till.
+            Product ChosenProduct = GetProductForCart(Product.ProductList); // Hämtar artikeln som ska läggas till.
             Quantity = GetProductLineQuantity();
             PricePerLine = Quantity * ChosenProduct.price;
             ProductName = ChosenProduct.name;
@@ -29,10 +29,9 @@ namespace Projektarbete_E_Commerce_KOTR
             Description = ChosenProduct.description;
             Price = ChosenProduct.price;
             Category = ChosenProduct.category;
-            
         }
 
-        public Product GetProductForCart(string[] diffcats, List<Product> Products)
+        public Product GetProductForCart(List<Product> Products)
         {
             Product ProductForCart = new Product();
             Console.WriteLine("\n-Type in the wanted product ID.");
@@ -49,7 +48,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     prodID = 0;
                 }
                 
-                if (prodID <= diffcats.Length && prodID >= 1)
+                if (prodID >= 1 && prodID <= Products.Count)
                 {
                     
                     for (int i = 0; i < Products.Count; i++)

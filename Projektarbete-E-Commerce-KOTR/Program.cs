@@ -16,11 +16,15 @@ namespace Projektarbete_E_Commerce_KOTR
             MenuHandler myMenu = new MenuHandler();
             InputManager Choice = new InputManager();
 
+            Product ProductReference = new Product();
+
 
             while (true)
             {
                 if (!menuWritten)
                 {
+
+                    ProductReference.Products();
                     myMenu.DisplayMenu();
                     menuWritten = true;
                 }
