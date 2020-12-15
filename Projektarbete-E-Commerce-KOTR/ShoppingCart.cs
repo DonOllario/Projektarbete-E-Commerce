@@ -8,19 +8,9 @@ namespace Projektarbete_E_Commerce_KOTR
 {
     class ShoppingCart
     {
-        string CartID { get; }
-        int DateAdded { get; set; }
         MenuHandler myMenu = new MenuHandler();
         public List<ProductLine> CartList = new List<ProductLine>();
 
-
-        private static int CartIDSeed = 1234567890;
-
-        public ShoppingCart() 
-        {
-            CartID = CartIDSeed.ToString();
-            CartIDSeed++;
-        }
 
         public void AddProductLine()//Addera den produkt användaren har valt till CartList.
         {
@@ -29,11 +19,6 @@ namespace Projektarbete_E_Commerce_KOTR
             Console.WriteLine("                                         Press any key to continue shopping.");
             Console.ReadKey();
             myMenu.GoBack();
-        }
-
-        public void RemoveFromCart()
-        {
-            //CartList.Remove();
         }
 
         public void PrintCart(List<ProductLine> cartList)
@@ -87,7 +72,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
         public void Checkout()
         {
-            Order MyOrder = new Order(CartList, null, null);
+            Order MyOrder = new Order(CartList, Account.Adress, Account.Name);
             MyOrder.PrintReciept();
             Console.WriteLine("\n**********************************************************************************\n\n-Press any key to continue shopping.");
             Console.ReadKey();

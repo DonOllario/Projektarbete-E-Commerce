@@ -6,50 +6,55 @@ using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    class Account
+    static class Account
     {
-        MenuHandler myMenu = new MenuHandler();
+        static MenuHandler myMenu = new MenuHandler();
 
-        public void LogIn()
+        public static string Name { get; set; }
+        public static string UserName { get; set; }
+        public static string Adress { get; set; }
+        private static string Password { get; set; }
+        public static bool LoginStatus { get; set; }
+
+        public static void SignUp()
         {
-            Console.WriteLine("Enter your 'username': ");
-            string username = Console.ReadLine();
-            Console.WriteLine("Enter your 'password': ");
-            string password = Console.ReadLine();
-            if ((password == "password") && (username == "username"))
+            string edit = "edit";
+            while (edit == "edit") 
             {
-                Console.WriteLine("You are welcome.");
+                Console.WriteLine("Enter your name: ");
+                Name = Console.ReadLine();
+                Console.WriteLine("Enter your username: ");
+                UserName = Console.ReadLine();
+                Console.WriteLine("Enter a password: ");
+                Password = Console.ReadLine();
+                Console.WriteLine("Enter your adress: ");
+                Adress = Console.ReadLine();
+                myMenu.ClearConsoleKOTRM();
+                Console.WriteLine("**********************************************");
+                Console.WriteLine("Welcome, " + Name + ". This is your account information: \n");
+                Console.WriteLine("Username: " + UserName);
+                Console.WriteLine("Adress: " + Adress);
+                Console.WriteLine("\nIf you want to edit your info write 'edit'.");
+                Console.WriteLine("Or press any key to continue.");
+                edit = Console.ReadLine().ToLower();
             }
-            // Behövs FelHantering efter if. (och koppling till sign up?)
         }
-          public void SignUp() // Addera felhantering ifall du skulle skriva fel typ av info(?)
+        public static void LogIn()
+        {
+            Console.WriteLine("Enter your username: ");
+            string username = Console.ReadLine();
+            Console.WriteLine("Enter your password: ");
+            string password = Console.ReadLine();
+            if ((password == Password) && (username == UserName))
             {
-                string Edit;
-                do
-                {
-                    Console.WriteLine("Enter your Fullname: ");
-                    string user = Console.ReadLine();
-                    Console.WriteLine("Enter Adress:");
-                    string Adress = Console.ReadLine();
-                    Console.WriteLine("Enter your E-mail adress:");
-                    string Email = Console.ReadLine();
-                    Console.WriteLine("Enter your Phone number:");
-                    string Phonenumber = Console.ReadLine();
-                    myMenu.ClearConsoleKOTRM();
-                    Console.WriteLine("****************************");
-                    Console.WriteLine(" -Welcome  " + user + " this is your Informations.- ");
-                    Console.WriteLine(" UserName : " + user);
-                    Console.WriteLine(" Adress : " + Adress);
-                    Console.WriteLine(" Email : " + Email);
-                    Console.WriteLine(" Phonenumber : " + Phonenumber);
-                    Console.WriteLine("\nIf you want to Edit your info write 'Edit'. \nOr press any key to continue.");
-                    Edit = Console.ReadLine();
-                } while (Edit == "Edit");
-               
+                Console.WriteLine("\nLogin successful!");
+                LoginStatus = true;
             }
-
-        } 
-
-
-    }
+            else
+            {
+                Console.WriteLine("\nThe entered login information was wrong.");
+            }
+        }
+    } 
+}
 

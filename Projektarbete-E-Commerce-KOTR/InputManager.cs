@@ -83,21 +83,33 @@ namespace Projektarbete_E_Commerce_KOTR
             {
                 // Admin Menu
                 Console.Clear();
-                myMenu.DisplayAdminMenu();
-                while (true)
+                if (Account.LoginStatus)
                 {
-                    string AdminInput = Console.ReadLine();
+                    myMenu.DisplayAdminMenu();
 
-                    if (AdminInput == "1" || AdminInput == "2" || AdminInput == "3" || AdminInput == "4")
+                    while (true)
                     {
-                        myAdminHandler.HandleAdmin(AdminInput);
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect Input, Please try again");
+                        string AdminInput = Console.ReadLine();
+
+                        if (AdminInput == "1" || AdminInput == "2" || AdminInput == "3" || AdminInput == "4")
+                        {
+                            myAdminHandler.HandleAdmin(AdminInput);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input, Please try again");
+                        }
                     }
                 }
+                else
+                {
+                    Console.WriteLine("You need to login to access");
+                    Console.WriteLine("Press any key to go back");
+                    Console.ReadKey();
+                    myMenu.GoBack();
+                }
+                
                 
             }
             else if (userInput == "Close" || userInput == "close")

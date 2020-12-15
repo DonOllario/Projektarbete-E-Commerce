@@ -9,7 +9,7 @@ namespace Projektarbete_E_Commerce_KOTR
     class Order
     {
         private double TotalPrice;
-        private int OrderID = 1234567890;
+        private static int OrderID = 1234567890;
         private string DeliveryAdress;
         private List<ProductLine> OrderLines;
         private bool Invoice = false;
