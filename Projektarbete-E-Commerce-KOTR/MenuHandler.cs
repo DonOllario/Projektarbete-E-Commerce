@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    public class MenuHandler
+    class MenuHandler
     {
         List<string> menuOptions = new List<string>();
         List<string> signInOptions = new List<string>();
         List<string> adminOptions = new List<string>();
-        bool displayMenuSaved = false;
-        bool signInMenuSaved = false;
-        bool adminMenuSaved = false;
-        //bool LoginStatus = false; // Kollar din Login status
+        bool displayMenuSaved = false; //Adderar inte till listan nefter att det skett en gång
+        bool signInMenuSaved = false; //Adderar inte till listan nefter att det skett en gång
+        bool adminMenuSaved = false; //Adderar inte till listan nefter att det skett en gång
 
         public void DisplayMenu()
         {

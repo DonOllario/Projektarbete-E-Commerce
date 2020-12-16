@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
@@ -26,7 +23,7 @@ namespace Projektarbete_E_Commerce_KOTR
         public Order(List<ProductLine> cartList, string accountAdress, string accountName) //Konstruktor som skapar en order Alla metoder körs internt.
         {
             MyHandler.ClearConsoleKOTRM();
-            OrderID++; // Skapar ett nytt unikt ordernummer varje gång. <--- Men fungerar inte just nu 
+            OrderID++; // Skapar ett nytt unikt ordernummer varje gång. 
             OrderLines = cartList; // Tar all info från de ProductLine som finns i CartList, döper om dem till OrderLines för tydlighetens skull.
             TotalPrice = CalcTotalPrice(cartList); // Räknar ut totalpriset på ordern
             MyHandler.ClearConsoleKOTRM(); 
@@ -40,7 +37,7 @@ namespace Projektarbete_E_Commerce_KOTR
             }
             while (PaymentCheck == false) // loopar sålänge betalningen inte gått igenom.
             {
-                string payment = SetPaymentChoise(); //Ber användaren välja betalningsmetod
+                string payment = SetPaymentChoice(); //Ber användaren välja betalningsmetod
                 if (payment == "1")
                 {
                     NameOnCard = SetNameOnCard(); //Ber om kortnamn
@@ -87,7 +84,7 @@ namespace Projektarbete_E_Commerce_KOTR
             DeliveryAdress = adress;
         }
 
-        private string SetPaymentChoise()// Sätter betalningsmetoden
+        private string SetPaymentChoice()// Sätter betalningsmetoden
         {
             MyHandler.ClearConsoleKOTRM();
             Console.WriteLine("Choose your payment method.{0}1. Credit card.{0}2. Invoice.", Environment.NewLine);

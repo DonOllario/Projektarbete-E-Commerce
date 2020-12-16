@@ -15,8 +15,6 @@ namespace Projektarbete_E_Commerce_KOTR
         public double Price;
         public string Description;
         public string Category;
-
-        Product ProductReference = new Product();
         
 
         public ProductLine() //Skapar kundkorgsraden

@@ -1,23 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projektarbete_E_Commerce_KOTR
 {
-    public class InputManager
+    class InputManager
     {
         MenuHandler myMenu = new MenuHandler();
         SignUpSystem signUp = new SignUpSystem();
-        Product Clothes = new Product();
         HandleProducts HandleClothes = new HandleProducts();
         ShoppingCart myCart = new ShoppingCart();
         AdminSystem myAdminHandler = new AdminSystem();
 
+        //enum InputEnum 
+        //{
+        //    ViewProducts=1,
+        //    ShowShoppingCart,
+        //    SignUpOrLogIn,
+        //    Admin
+        //}
 
         public void HandleInput(String userInput)
         {
+            
             if (userInput == "1")
             {
                 // Show Catalogue
@@ -33,7 +37,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     userInput = userInput.ToLower();
                     if (userInput == "add")
                     {
-                        myCart.AddProductLine();
+                        myCart.AddProductLine(); //Lägger till en produkt genom ProductLine till ShoppingCart
                         break;
                     }
                     else if (userInput == "back")
