@@ -11,18 +11,17 @@ namespace Projektarbete_E_Commerce_KOTR
         ShoppingCart myCart = new ShoppingCart();
         AdminSystem myAdminHandler = new AdminSystem();
 
-        //enum InputEnum 
-        //{
-        //    ViewProducts=1,
-        //    ShowShoppingCart,
-        //    SignUpOrLogIn,
-        //    Admin
-        //}
-
+        enum InputEnum
+        {
+            ViewProducts = 1,
+            ShowShoppingCart,
+            SignUpOrLogIn,
+            Admin
+        }
+        
         public void HandleInput(String userInput)
         {
-            
-            if (userInput == "1")
+            if (userInput == Convert.ToString((int)InputEnum.ViewProducts))
             {
                 // Show Catalogue
                 myMenu.ClearConsoleKOTRM(); //Clear
@@ -50,7 +49,7 @@ namespace Projektarbete_E_Commerce_KOTR
 
                 }
             }
-            else if (userInput == "2")
+            else if (userInput == Convert.ToString((int)InputEnum.ShowShoppingCart))
             {
                 // Show Shopping Cart
                 if ((myCart.CartList != null) && (!myCart.CartList.Any()))
@@ -62,7 +61,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     myCart.PrintCart(myCart.CartList);
                 }
             }
-            else if (userInput == "3")
+            else if (userInput == Convert.ToString((int)InputEnum.SignUpOrLogIn))
             {
                 // Sign up / log in
                 Console.Clear();
@@ -83,7 +82,7 @@ namespace Projektarbete_E_Commerce_KOTR
                     }
                 }
             }
-            else if (userInput == "4")
+            else if (userInput == Convert.ToString((int)InputEnum.Admin))
             {
                 // Admin Menu
                 Console.Clear();
